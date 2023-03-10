@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
+import { YoutubeComponent } from './components/youtube/youtube.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    YoutubeComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class HeaderModule { }
+export class YoutubeModule { }
