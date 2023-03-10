@@ -1,14 +1,18 @@
-export interface ResponseApiTypes {
-  kind: string;
-  etag: string;
-  pageInfo: PageInfoResult;
+export interface SearchItem {
   items: [Items];
 }
 
-export interface PageInfoResult {
-  totalResults: number;
-  resultsPerPage: number;
-}
+// export interface ResponseApiTypes {
+//   kind: string;
+//   etag: string;
+//   pageInfo: PageInfoResult;
+//   items: [Items];
+// }
+
+// export interface PageInfoResult {
+//   totalResults: number;
+//   resultsPerPage: number;
+// }
 
 export interface Items {
   kind: string;
@@ -23,24 +27,26 @@ export interface SnippetInfo {
   channelId: string;
   title: string;
   description: string;
-  thumbnails: {
-    default: UrlWidthHeight;
-    medium: UrlWidthHeight;
-    high: UrlWidthHeight;
-    standard: UrlWidthHeight;
-    maxres: UrlWidthHeight;
-  };
+  thumbnails: Thubnails;
   channelTitle: string;
   tags: string[];
   categoryId: string;
   liveBroadcastContent: string;
-  localized: {
-    title: string;
-    description: string;
-  };
+  localized: LocalizedTitle;
   defaultAudioLanguage: string;
 }
 
+export interface Thubnails {
+  default: UrlWidthHeight;
+  medium: UrlWidthHeight;
+  high: UrlWidthHeight;
+  standard: UrlWidthHeight;
+  maxres: UrlWidthHeight;
+}
+export interface LocalizedTitle {
+  title: string;
+  description: string;
+}
 export interface StatisticsCount {
   viewCount: string;
   likeCount: string;
@@ -53,10 +59,4 @@ export interface UrlWidthHeight {
   url: string;
   width: number;
   height: number;
-}
-
-export interface KindEtag {
-  kind: string;
-  etag: string;
-  id?: string;
 }
