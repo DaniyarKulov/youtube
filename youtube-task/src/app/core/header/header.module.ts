@@ -6,5 +6,6 @@ import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [HeaderComponent, SearchComponent],
   imports: [CommonModule],
+  exports: [HeaderComponent, SearchComponent],
 })
 export class HeaderModule {}
