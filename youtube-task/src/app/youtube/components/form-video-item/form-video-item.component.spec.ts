@@ -8,9 +8,8 @@ describe('FormVideoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormVideoItemComponent ]
-    })
-    .compileComponents();
+      declarations: [FormVideoItemComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FormVideoItemComponent);
     component = fixture.componentInstance;
