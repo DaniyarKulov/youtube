@@ -32,11 +32,11 @@ export interface SnippetInfo {
 }
 
 export interface Thubnails {
-  default: UrlWidthHeight;
-  medium: UrlWidthHeight;
-  high: UrlWidthHeight;
-  standard: UrlWidthHeight;
-  maxres: UrlWidthHeight;
+  default: UrlImg;
+  medium: UrlImg;
+  high: UrlImg;
+  standard: UrlImg;
+  maxres: UrlImg;
 }
 export interface LocalizedTitle {
   title: string;
@@ -50,7 +50,7 @@ export interface StatisticsCount {
   commentCount: string;
 }
 
-export interface UrlWidthHeight {
+export interface UrlImg {
   url: string;
   width: number;
   height: number;
