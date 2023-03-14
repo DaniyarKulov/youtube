@@ -7,11 +7,11 @@ import { ResponseJsonService } from 'src/app/services/response-json.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  items$ = this.res.getItems();
+  public items$ = this.res.getItems();
 
   constructor(private res: ResponseJsonService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.res.getItems();
   }
 }

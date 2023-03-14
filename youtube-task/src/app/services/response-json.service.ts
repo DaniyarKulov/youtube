@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ResponseApiTypes } from '../core/model/search-response.model';
-import { map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { SearchResponse } from '../core/model/search-response.model';
+import { SearchItem } from '../core/model/search-item.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResponseJsonService {
   constructor(private http: HttpClient) {}
-  getItems() {
-    return this.http.get<ResponseApiTypes>('../../assets/response.json').pipe(
-      map((res) => res.items),
-      tap((item) => console.log(item)),
-    );
+  public getItems(): Observable<SearchItem[]> {
+    return this.http.get<SearchResponse>('../../assets/response.json').pipe(map((res) => res.items));
   }
 }

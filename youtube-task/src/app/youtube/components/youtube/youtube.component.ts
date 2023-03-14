@@ -8,7 +8,7 @@ import { ResponseJsonService } from 'src/app/services/response-json.service';
   styleUrls: ['./youtube.component.scss'],
 })
 export class YoutubeComponent {
-  items$ = this.res.getItems();
-  itemsSnippet = this.res.getItems().pipe(map((snipp) => snipp));
+  public items$ = this.res.getItems();
+  public itemsSnippet = this.res.getItems().pipe(map((snipp) => snipp));
   constructor(private res: ResponseJsonService) {}
 }
