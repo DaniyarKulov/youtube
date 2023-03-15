@@ -10,6 +10,6 @@ import { SortComponent } from './components/sort/sort.component';
 @NgModule({
   declarations: [HeaderComponent, SearchComponent, SortComponent],
   imports: [CommonModule, MatFormFieldModule, MatInputModule, MatIconModule],
-  exports: [HeaderComponent, SearchComponent, SortComponent],
+  exports: [HeaderComponent, SearchComponent],
 })
 export class HeaderModule {}
