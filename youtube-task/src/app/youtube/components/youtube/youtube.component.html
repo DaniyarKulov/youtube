@@ -1,3 +1,9 @@
-<ul>
-  <app-form-video-item *ngFor="let item of items$ | async | sort : test$" [item]="item"></app-form-video-item>
-</ul>
+<mat-card>
+  <ul class="ul">
+    <app-form-video-item
+      [appBorderColor]="item.snippet.publishedAt"
+      class="form"
+      *ngFor="let item of items$ | async | filter : search | sort : test$"
+      [video]="item"></app-form-video-item>
+  </ul>
+</mat-card>

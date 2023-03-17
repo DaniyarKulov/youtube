@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ResponseJsonService } from 'src/app/services/response-json.service';
+import { Component } from '@angular/core';
+import { ViewStateService } from 'src/app/services/view-state.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  public items$ = this.res.getItems();
-
-  constructor(private res: ResponseJsonService) {}
-
-  public ngOnInit(): void {
-    this.res.getItems();
+export class HeaderComponent {
+  constructor(private viewStateService: ViewStateService) {}
+  public searchValueChange(searchValue: string): void {
+    this.viewStateService.changeSearchValue(searchValue);
+  }
+  public sortValueChange(sortValue: string): void {
+    this.viewStateService.changeValue(sortValue);
   }
 }

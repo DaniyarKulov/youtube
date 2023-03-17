@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, map, tap } from 'rxjs';
-import { ResponseJsonService } from 'src/app/services/response-json.service';
+import { Subscription, tap } from 'rxjs';
+import { VideosHttpService } from 'src/app/services/videos-http.service';
+import { ViewStateService } from 'src/app/services/view-state.service';
 
 @Component({
   selector: 'app-youtube',
@@ -8,18 +9,28 @@ import { ResponseJsonService } from 'src/app/services/response-json.service';
   styleUrls: ['./youtube.component.scss'],
 })
 export class YoutubeComponent implements OnInit, OnDestroy {
-  public items$ = this.res.getItems();
-  public itemsSnippet = this.res.getItems().pipe(map((snipp) => snipp));
+  public items$ = this.videosHttpService.getItems();
   public test$ = 'viewCountDecrease';
+  public search = '';
   private subs = new Subscription();
-  constructor(private res: ResponseJsonService) {}
+
+  constructor(private res: ViewStateService, private videosHttpService: VideosHttpService) {}
 
   public ngOnInit(): void {
     this.subs.add(
-      this.res.sbj$
+      this.res.sort$
         .pipe(
           tap((item) => {
             this.test$ = item;
+          }),
+        )
+        .subscribe(),
+    );
+    this.subs.add(
+      this.res.search$
+        .pipe(
+          tap((item) => {
+            this.search = item;
           }),
         )
         .subscribe(),

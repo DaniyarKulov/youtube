@@ -1,6 +1,7 @@
-<div>
+<div class="sort">
   <p>sorting by:</p>
   <button (click)="changeVal()">date {{ sortDate === 'dateIncrease' ? '↑' : '↓' }} </button>
   <button (click)="changeValCount()">count of views {{ count === 'viewCountIncrease' ? '↑' : '↓' }}</button>
-  <button>by word or sentance</button>
+  <p>by word or sentance:</p>
+  <input #inputElem (input)="filterInputChange(inputElem.value)" type="text" />
 </div>
