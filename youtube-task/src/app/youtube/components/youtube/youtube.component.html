@@ -3,7 +3,7 @@
     <app-form-video-item
       [appBorderColor]="item.snippet.publishedAt"
       class="form"
-      *ngFor="let item of items$ | async | filter : search | sort : test$"
+      *ngFor="let item of items$ | async | filter : search | sort : test$; trackBy: trackById"
       [video]="item"></app-form-video-item>
   </ul>
 </mat-card>

@@ -18,4 +18,8 @@ export class FormVideoItemComponent implements OnInit {
       this.statiscticsAndIcons.push({ icon: item, date: this.videoStatistics[i] });
     });
   }
+
+  public trackByIndex(index: number): number {
+    return index;
+  }
 }

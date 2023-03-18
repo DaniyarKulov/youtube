@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
+import { SearchItem } from 'src/app/core/model/search-item.model';
 import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
 import { ViewStateService } from 'src/app/shared/services/view-state.service';
 
@@ -40,5 +41,9 @@ export class YoutubeComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.subs.unsubscribe();
+  }
+
+  public trackById(_: number, item: SearchItem): string {
+    return item.id;
   }
 }
