@@ -1,5 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
+enum Sort {
+  dateDecrease = 'dateDecrease',
+  dateIncrease = 'dateIncrease',
+  viewCountDecrease = 'viewCountDecrease',
+  viewCountIncrease = 'viewCountIncrease',
+}
+
 @Component({
   selector: 'app-sort',
   templateUrl: './sort.component.html',
@@ -16,23 +23,23 @@ export class SortComponent {
   public sortChanged: EventEmitter<string> = new EventEmitter<string>();
 
   public changeVal(): void {
-    if (this.sortDate === '' || this.sortDate === 'dateDecrease') {
-      this.sortChanged.emit('dateDecrease');
-      this.sortDate = 'dateIncrease';
+    if (this.sortDate === '' || this.sortDate === Sort.dateDecrease) {
+      this.sortChanged.emit(Sort.dateDecrease);
+      this.sortDate = Sort.dateIncrease;
       return;
     }
-    this.sortChanged.emit('dateIncrease');
-    this.sortDate = 'dateDecrease';
+    this.sortChanged.emit(Sort.dateIncrease);
+    this.sortDate = Sort.dateDecrease;
   }
 
   public changeValCount(): void {
-    if (this.count === '' || this.count === 'viewCountDecrease') {
-      this.sortChanged.emit('viewCountDecrease');
-      this.count = 'viewCountIncrease';
+    if (this.count === '' || this.count === Sort.viewCountDecrease) {
+      this.sortChanged.emit(Sort.viewCountDecrease);
+      this.count = Sort.viewCountIncrease;
       return;
     }
-    this.sortChanged.emit('viewCountIncrease');
-    this.count = 'viewCountDecrease';
+    this.sortChanged.emit(Sort.viewCountIncrease);
+    this.count = Sort.viewCountDecrease;
   }
 
   public filterInputChange(event: string): void {

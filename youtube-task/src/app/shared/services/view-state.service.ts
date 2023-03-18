@@ -13,6 +13,7 @@ export class ViewStateService {
   public changeValue(value: string): void {
     this.sort$$.next(value);
   }
+
   public changeSearchValue(value: string): void {
     this.search$$.next(value);
   }

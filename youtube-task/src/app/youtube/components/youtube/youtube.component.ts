@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
-import { VideosHttpService } from 'src/app/services/videos-http.service';
-import { ViewStateService } from 'src/app/services/view-state.service';
+import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
+import { ViewStateService } from 'src/app/shared/services/view-state.service';
 
 @Component({
   selector: 'app-youtube',
@@ -26,6 +26,7 @@ export class YoutubeComponent implements OnInit, OnDestroy {
         )
         .subscribe(),
     );
+
     this.subs.add(
       this.res.search$
         .pipe(
@@ -36,6 +37,7 @@ export class YoutubeComponent implements OnInit, OnDestroy {
         .subscribe(),
     );
   }
+
   public ngOnDestroy(): void {
     this.subs.unsubscribe();
   }

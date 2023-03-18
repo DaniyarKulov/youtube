@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { SearchResponse } from '../core/model/search-response.model';
-import { SearchItem } from '../core/model/search-item.model';
+import { SearchItem } from 'src/app/core/model/search-item.model';
+import { SearchResponse } from 'src/app/core/model/search-response.model';
 
 @Injectable({
   providedIn: 'root',

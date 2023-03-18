@@ -27,10 +27,12 @@ export interface Thubnails {
   standard: Thubnail;
   maxres: Thubnail;
 }
+
 export interface Localized {
   title: string;
   description: string;
 }
+
 export interface Statistics {
   viewCount: string;
   likeCount: string;

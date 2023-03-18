@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewStateService } from 'src/app/services/view-state.service';
+import { ViewStateService } from 'src/app/shared/services/view-state.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +8,11 @@ import { ViewStateService } from 'src/app/services/view-state.service';
 })
 export class HeaderComponent {
   constructor(private viewStateService: ViewStateService) {}
+
   public searchValueChange(searchValue: string): void {
     this.viewStateService.changeSearchValue(searchValue);
   }
+
   public sortValueChange(sortValue: string): void {
     this.viewStateService.changeValue(sortValue);
   }
