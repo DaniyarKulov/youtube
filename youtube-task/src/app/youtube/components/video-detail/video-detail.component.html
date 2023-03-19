@@ -1,0 +1,13 @@
+<div *ngIf="video">
+  <img
+    ngSrc="{{ video.snippet.thumbnails.maxres.url }}"
+    width="{{ video.snippet.thumbnails.maxres.width }}"
+    height="{{ video.snippet.thumbnails.maxres.height }}"
+    alt="{{ video.snippet.title }}" />
+  <p>{{ video.snippet.title }}</p>
+  <p
+    >description: <br />
+    {{ video.snippet.description }}</p
+  >
+  <button routerLink="/youtube">Назад</button>
+</div>
