@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs';
+import { Subscription, map, switchMap, tap } from 'rxjs';
 import { SearchItem } from 'src/app/core/model/search-item.model';
 import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
 
@@ -9,20 +9,32 @@ import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
   templateUrl: './video-detail.component.html',
   styleUrls: ['./video-detail.component.scss'],
 })
-export class VideoDetailComponent implements OnInit {
-  public video!: SearchItem | null;
+export class VideoDetailComponent implements OnInit, OnDestroy {
+  public video!: SearchItem | undefined;
+  private subs = new Subscription();
 
   constructor(private route: ActivatedRoute, private videosHttpService: VideosHttpService) {}
 
   public ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    this.videosHttpService
-      .getItems()
-      .pipe(
-        tap((item) => {
-          this.video = item.find((v) => v.id === routeParams.get('id')) ?? null;
-        }),
-      )
-      .subscribe();
+    this.subs.add(
+      this.route.paramMap
+        .pipe(
+          map((paramMap) => paramMap.get('id') ?? ''),
+          switchMap((idFromRoute) =>
+            this.videosHttpService.getItems().pipe(
+              tap((videos) => {
+                this.video = videos.find((video) => video.id === idFromRoute) ?? undefined;
+              }),
+            ),
+          ),
+        )
+        .subscribe(),
+    );
   }
+
+  public ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
+  public addVideo(): void {}
 }

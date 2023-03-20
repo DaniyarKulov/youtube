@@ -1,13 +1,22 @@
-<div *ngIf="video">
+<div *ngIf="video" class="video">
+  <mat-card-actions>
+    <button routerLink="/youtube">Назад</button>
+  </mat-card-actions>
   <img
+    mat-card-image
     ngSrc="{{ video.snippet.thumbnails.maxres.url }}"
     width="{{ video.snippet.thumbnails.maxres.width }}"
     height="{{ video.snippet.thumbnails.maxres.height }}"
     alt="{{ video.snippet.title }}" />
-  <p>{{ video.snippet.title }}</p>
-  <p
-    >description: <br />
-    {{ video.snippet.description }}</p
-  >
-  <button routerLink="/youtube">Назад</button>
+  <div class="video__info"></div>
+  <mat-card-title>
+    <p>{{ video.snippet.title }}</p>
+  </mat-card-title>
+  <p>{{ video.snippet.publishedAt | date : 'EEEE, MMMM d, y' }}</p>
+  <mat-card-content>
+    <p
+      >description: <br />
+      {{ video.snippet.description }}</p
+    >
+  </mat-card-content>
 </div>
