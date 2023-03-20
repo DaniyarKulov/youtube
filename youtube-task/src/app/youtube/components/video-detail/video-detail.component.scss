@@ -1,3 +1,15 @@
 .video {
-  display: inline-grid;
+  display: grid;
+  grid-template-columns: 32px 729px 360px;
+  margin: 30px 0;
+  &__info {
+    padding: 35px;
+  }
+  &__button {
+    align-self: flex-start;
+  }
+}
+.container {
+  display: flex;
+  justify-content: center;
 }
