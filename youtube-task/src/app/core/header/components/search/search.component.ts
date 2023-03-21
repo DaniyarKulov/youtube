@@ -7,6 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent {
   public isToggle: boolean = false;
+
   @Output()
   public isToggledChanged = new EventEmitter<boolean>();
 
