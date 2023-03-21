@@ -1,14 +1,15 @@
 <div class="content">
-  <button> <mat-icon>video_library</mat-icon></button>
+  <img src="../../../../../assets/image/svg/logo.svg" alt="" />
   <div>
     <mat-form-field class="search" appearance="fill">
       <mat-label></mat-label>
       <input matInput />
     </mat-form-field>
   </div>
-  <button (click)="toggle()"><mat-icon>filter_list</mat-icon></button>
+  <!-- <button (click)="toggle()"><mat-icon>filter_list</mat-icon> -->
+  <img (click)="toggle()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
   <div class="logo">
     <mat-card-title>Logo</mat-card-title>
-    <div mat-card-avatar class="logo__avatar"></div>
+    <img class="logo__avatar" src="../../../../../assets/image/svg/login.svg" alt="" />
   </div>
 </div>
