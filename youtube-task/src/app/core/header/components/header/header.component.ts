@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ViewStateService } from 'src/app/shared/services/view-state.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { ViewStateService } from 'src/app/shared/services/view-state.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input()
+  public toggleSort: boolean = false;
+
   constructor(private viewStateService: ViewStateService) {}
 
   public searchValueChange(searchValue: string): void {
@@ -15,5 +18,9 @@ export class HeaderComponent {
 
   public sortValueChange(sortValue: string): void {
     this.viewStateService.changeValue(sortValue);
+  }
+
+  public toggleChange(bool: boolean): void {
+    this.toggleSort = bool;
   }
 }

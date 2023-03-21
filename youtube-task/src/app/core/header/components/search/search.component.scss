@@ -8,3 +8,11 @@
   align-items: center;
   gap: 20px;
 }
+.logo {
+  display: flex;
+  &__avatar {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+  }
+}

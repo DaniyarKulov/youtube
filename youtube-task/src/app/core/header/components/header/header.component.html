@@ -1,2 +1,5 @@
-<app-search></app-search>
-<app-sort (sortChanged)="sortValueChange($event)" (searchedChange)="searchValueChange($event)"></app-sort>
+<app-search (isToggledChanged)="toggleChange($event)"></app-search>
+<app-sort
+  *ngIf="toggleSort"
+  (sortChanged)="sortValueChange($event)"
+  (searchedChange)="searchValueChange($event)"></app-sort>
