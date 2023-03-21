@@ -10,10 +10,14 @@ export interface Snippet {
   publishedAt: string;
   channelId: string;
   title: string;
+  description: string;
+  thumbnails: Thubnails;
+  channelTitle: string;
   tags: string[];
   categoryId: string;
   liveBroadcastContent: string;
   localized: Localized;
+  defaultAudioLanguage: string;
 }
 
 export interface Thubnails {
@@ -33,6 +37,7 @@ export interface Statistics {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
+  favoriteCount: string;
   commentCount: string;
 }
 

@@ -6,6 +6,7 @@ export interface SearchResponse {
   pageInfo: PageInfo;
   items: SearchItem[];
 }
+
 export interface PageInfo {
   totalResults: number;
   resultsPerPage: number;

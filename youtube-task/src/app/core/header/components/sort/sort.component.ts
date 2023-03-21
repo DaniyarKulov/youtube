@@ -16,13 +16,11 @@ export class SortComponent {
   public sortDate = '';
   public count = '';
   public isToggle = false;
-
   @Output()
   public searchedChange: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
   public sortChanged: EventEmitter<string> = new EventEmitter<string>();
-
   public changeVal(): void {
     if (this.sortDate === '' || this.sortDate === Sort.dateDecrease) {
       this.sortChanged.emit(Sort.dateDecrease);
