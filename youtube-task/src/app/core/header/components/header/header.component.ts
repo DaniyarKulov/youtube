@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ViewStateService } from 'src/app/shared/services/view-state.service';
+import { ViewStateService } from '../../../../shared/services/view-state.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +7,7 @@ import { ViewStateService } from 'src/app/shared/services/view-state.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input()
-  public toggleSort: boolean = false;
+  @Input() public isSortAvailable: boolean = false;
 
   constructor(private viewStateService: ViewStateService) {}
 
@@ -20,7 +19,7 @@ export class HeaderComponent {
     this.viewStateService.changeValue(sortValue);
   }
 
-  public toggleChange(bool: boolean): void {
-    this.toggleSort = bool;
+  public toggleChange(isSortAvailable: boolean): void {
+    this.isSortAvailable = isSortAvailable;
   }
 }

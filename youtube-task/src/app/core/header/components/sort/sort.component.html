@@ -1,7 +1,9 @@
 <div class="sort">
   <p>sorting by:</p>
-  <button (click)="changeVal()">date {{ sortDate === 'dateIncrease' ? '↑' : '↓' }} </button>
-  <button (click)="changeValCount()">count of views {{ count === 'viewCountIncrease' ? '↑' : '↓' }}</button>
+  <button (click)="changeDateDirection()">date {{ sortByDateDirection === 'dateIncrease' ? '↑' : '↓' }} </button>
+  <button (click)="changeCountDirection()"
+    >count of views {{ sortByCountDirection === 'viewCountIncrease' ? '↑' : '↓' }}</button
+  >
   <p>by word or sentance:</p>
-  <input #inputElem (input)="filterInputChange(inputElem.value)" type="text" />
+  <input #inputElem (input)="searchDirection(inputElem.value)" type="text" />
 </div>

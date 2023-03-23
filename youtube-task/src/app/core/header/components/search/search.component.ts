@@ -6,9 +6,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
+  @Output() public isToggledChanged = new EventEmitter<boolean>();
+
   public isToggle: boolean = false;
-  @Output()
-  public isToggledChanged = new EventEmitter<boolean>();
 
   public toggle(): void {
     this.isToggle = !this.isToggle;
