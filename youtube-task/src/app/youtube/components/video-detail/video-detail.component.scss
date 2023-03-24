@@ -15,9 +15,9 @@
   }
   &__description {
     height: 300px;
-    overflow-y: scroll;
+    overflow: auto;
     box-sizing: border-box;
-    width: 370px;
+    width: 400px;
   }
   &__count {
     display: flex;
