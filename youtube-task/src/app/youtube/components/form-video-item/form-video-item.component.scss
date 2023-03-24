@@ -1,0 +1,16 @@
+.view {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.youtube {
+  text-align: center;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+  &__title {
+    font-size: 16px;
+  }
+}
+:host {
+  border-bottom: 3px solid transparent;
+}
