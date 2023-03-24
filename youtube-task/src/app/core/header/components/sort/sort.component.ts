@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SortDirection } from '../../../model/sort-direction.model';
+import { SortDirection } from '../../../constans/sort-direction.model';
 
 @Component({
   selector: 'app-sort',
