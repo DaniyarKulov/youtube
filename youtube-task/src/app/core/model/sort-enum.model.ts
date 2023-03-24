@@ -1,4 +1,4 @@
-export enum SortEnum {
+export enum SortDirection {
   dateDecrease = 'dateDecrease',
   dateIncrease = 'dateIncrease',
   viewCountDecrease = 'viewCountDecrease',

@@ -1,5 +1,5 @@
-<app-search (isToggledChanged)="toggleChange($event)"></app-search>
+<app-search (isToggledChanged)="toggleSortingAvailability($event)"></app-search>
 <app-sort
   *ngIf="isSortAvailable"
-  (sortEventEmitter)="sortValueChange($event)"
+  (sortOrderChange)="onSortOrderChange($event)"
   (searchEventEmitter)="searchValueChange($event)"></app-sort>

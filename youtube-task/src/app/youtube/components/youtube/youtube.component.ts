@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
-import { SortEnum } from '../../../core/model/sort-enum.model';
+import { SortDirection } from '../../../core/model/sort-enum.model';
 import { ViewStateService } from '../../../shared/services/view-state.service';
 import { VideosHttpService } from '../../../shared/services/videos-http.service';
 import { SearchItem } from '../../../core/model/search-item.model';
@@ -12,7 +12,7 @@ import { SearchItem } from '../../../core/model/search-item.model';
 })
 export class YoutubeComponent implements OnInit, OnDestroy {
   public items$ = this.videosHttpService.getItems();
-  public viewCount = String(SortEnum.viewCountDecrease);
+  public viewCount = String(SortDirection.viewCountDecrease);
   public search = '';
   private subs = new Subscription();
 

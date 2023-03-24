@@ -15,11 +15,11 @@ export class HeaderComponent {
     this.viewStateService.changeSearchValue(searchValue);
   }
 
-  public sortValueChange(sortValue: string): void {
+  public onSortOrderChange(sortValue: string): void {
     this.viewStateService.changeValue(sortValue);
   }
 
-  public toggleChange(isSortAvailable: boolean): void {
+  public toggleSortingAvailability(isSortAvailable: boolean): void {
     this.isSortAvailable = isSortAvailable;
   }
 }
