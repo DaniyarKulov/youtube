@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { SearchItem } from '../../../core/model/search-item.model';
-import { SortDirection } from '../../../core/model/sort-enum.model';
+import { SortDirection } from '../../../core/model/sort-direction.model';
 
 @Pipe({
   name: 'sort',
