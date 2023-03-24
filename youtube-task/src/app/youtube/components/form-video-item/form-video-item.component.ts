@@ -22,8 +22,4 @@ export class FormVideoItemComponent implements OnInit {
   public trackByIndex(index: number): number {
     return index;
   }
-
-  public click(): void {
-    console.log(this.video.id);
-  }
 }

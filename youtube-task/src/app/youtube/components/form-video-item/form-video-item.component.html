@@ -1,5 +1,5 @@
 <li *ngIf="video.snippet" class="youtube">
-  <mat-card-content>
+  <mat-card-content class="youtube__card">
     <img
       ngSrc="{{ video.snippet.thumbnails.medium.url }}"
       width="{{ video.snippet.thumbnails.medium.width }}"
@@ -7,7 +7,7 @@
       alt="{{ video.snippet.title }}" />
     <div class="view">
       <div *ngFor="let statistic of statiscticsAndIcons; trackBy: trackByIndex">
-        <p>
+        <p class="youtube__view">
           <mat-icon>{{ statistic.icon }}</mat-icon> {{ statistic.date }}</p
         >
       </div>
