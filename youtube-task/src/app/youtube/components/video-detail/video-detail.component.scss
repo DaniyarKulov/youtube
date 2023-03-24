@@ -8,6 +8,21 @@
   &__button {
     align-self: flex-start;
   }
+  &__statistics {
+    display: flex;
+    margin-top: 15px;
+    gap: 20px;
+  }
+  &__description {
+    height: 300px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    width: 370px;
+  }
+  &__count {
+    display: flex;
+    align-items: center;
+  }
 }
 .container {
   display: flex;
