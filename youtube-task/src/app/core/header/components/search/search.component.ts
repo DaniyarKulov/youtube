@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {}
+export class SearchComponent {
+  public removeLocalStorage(): void {
+    localStorage.removeItem('token');
+  }
+}

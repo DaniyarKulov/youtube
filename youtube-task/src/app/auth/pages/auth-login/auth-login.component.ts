@@ -18,7 +18,9 @@ export class AuthLoginComponent implements OnInit {
   }
 
   public onLogin(): void {
-    console.log('login');
+    if (this.loginForm.valid) {
+      localStorage.setItem('token', 'asdasdasda');
+    }
   }
   public onPasswordHide(): void {
     this.isPasswordHide = !this.isPasswordHide;
