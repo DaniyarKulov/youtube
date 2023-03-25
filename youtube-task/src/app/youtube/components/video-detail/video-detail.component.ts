@@ -35,6 +35,4 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
-
-  public addVideo(): void {}
 }
