@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-auth-login',
@@ -9,24 +10,24 @@ import { Router } from '@angular/router';
 })
 export class AuthLoginComponent implements OnInit {
   public isPasswordHide = true;
-  public loginForm!: FormGroup;
-  constructor(private router: Router) {}
+  public loginForm!: FormGroup<{ email: FormControl<string | null>; password: FormControl<string | null> }>;
+
+  constructor(private router: Router, private loginService: LoginService) {}
 
   public ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      email: new FormControl<string | null>('', [Validators.required, Validators.email]),
+      password: new FormControl<string | null>('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
   public onLogin(): void {
-    if (this.loginForm.valid) {
-      localStorage.setItem('token', 'asdasdasda');
-      this.router.navigate(['/youtube']).catch();
-    }
+    localStorage.setItem('token', this.loginForm.controls.email.value ?? '');
+    this.loginService.authUser(this.loginForm.controls.email.value ?? '');
+    this.router.navigate(['/youtube']).catch();
   }
 
-  public onPasswordHide(): void {
+  public showPassword(): void {
     this.isPasswordHide = !this.isPasswordHide;
   }
 }

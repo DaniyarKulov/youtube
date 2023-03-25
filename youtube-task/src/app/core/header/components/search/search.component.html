@@ -7,5 +7,6 @@
     </mat-form-field>
   </div>
   <button><mat-icon>filter_list</mat-icon></button>
-  <button *ngIf="" (click)="logoutRedirect()">Logout</button>
+  <p>{{ username$ | async }}</p>
+  <button (click)="logoutRedirect()">Logout</button>
 </div>

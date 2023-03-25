@@ -5,8 +5,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private authUserLogin$ = new BehaviorSubject<string | null>(null);
-  public authUserLogin$$ = this.authUserLogin$.asObservable();
+  private authUserLogin$$ = new BehaviorSubject<string>('');
+  public authUserLogin$ = this.authUserLogin$$.asObservable();
 
   public isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
@@ -14,9 +14,10 @@ export class LoginService {
 
   public logout(): void {
     localStorage.removeItem('token');
+    this.authUserLogin$$.next('');
   }
 
-  // public authUser(user: string): void {
-  // this.authUserLogin$$.next(user);
-  // }
+  public authUser(username: string): void {
+    this.authUserLogin$$.next(username);
+  }
 }

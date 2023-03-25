@@ -17,7 +17,6 @@ const routes: Routes = [
   {
     path: 'youtube',
     canMatch: [isUserGuard],
-
     loadChildren: () => import('./youtube/youtube.module').then((module) => module.YoutubeModule),
   },
   {
