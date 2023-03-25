@@ -32,7 +32,4 @@ import { YoutubeRoutingModuleModule } from './youtube-routing.module';
   ],
   exports: [YoutubeComponent],
 })
-export class YoutubeModule {
-  static CanActivate: any;
-  static canActivate: any;
-}
+export class YoutubeModule {}
