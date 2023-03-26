@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
-enum Sort {
-  dateDecrease = 'dateDecrease',
-  dateIncrease = 'dateIncrease',
-  viewCountDecrease = 'viewCountDecrease',
-  viewCountIncrease = 'viewCountIncrease',
-}
+import { SortDirection } from '../../../constans/sort-direction.model';
 
 @Component({
   selector: 'app-sort',
@@ -13,36 +7,34 @@ enum Sort {
   styleUrls: ['./sort.component.scss'],
 })
 export class SortComponent {
-  public sortDate = '';
-  public count = '';
+  public sortByDateDirection = '';
+  public sortByCountDirection = '';
 
-  @Output()
-  public searchedChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public searchEventEmitter: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output()
-  public sortChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public sortOrderChange: EventEmitter<string> = new EventEmitter<string>();
 
-  public changeVal(): void {
-    if (this.sortDate === '' || this.sortDate === Sort.dateDecrease) {
-      this.sortChanged.emit(Sort.dateDecrease);
-      this.sortDate = Sort.dateIncrease;
+  public changeDateDirection(): void {
+    if (this.sortByDateDirection === '' || this.sortByDateDirection === SortDirection.dateDecrease) {
+      this.sortOrderChange.emit(SortDirection.dateDecrease);
+      this.sortByDateDirection = SortDirection.dateIncrease;
       return;
     }
-    this.sortChanged.emit(Sort.dateIncrease);
-    this.sortDate = Sort.dateDecrease;
+    this.sortOrderChange.emit(SortDirection.dateIncrease);
+    this.sortByDateDirection = SortDirection.dateDecrease;
   }
 
-  public changeValCount(): void {
-    if (this.count === '' || this.count === Sort.viewCountDecrease) {
-      this.sortChanged.emit(Sort.viewCountDecrease);
-      this.count = Sort.viewCountIncrease;
+  public changeSortByCountDirection(): void {
+    if (this.sortByCountDirection === '' || this.sortByCountDirection === SortDirection.viewCountDecrease) {
+      this.sortOrderChange.emit(SortDirection.viewCountDecrease);
+      this.sortByCountDirection = SortDirection.viewCountIncrease;
       return;
     }
-    this.sortChanged.emit(Sort.viewCountIncrease);
-    this.count = Sort.viewCountDecrease;
+    this.sortOrderChange.emit(SortDirection.viewCountIncrease);
+    this.sortByCountDirection = SortDirection.viewCountDecrease;
   }
 
-  public filterInputChange(event: string): void {
-    this.searchedChange.emit(event);
+  public searchDirection(event: string): void {
+    this.searchEventEmitter.emit(event);
   }
 }

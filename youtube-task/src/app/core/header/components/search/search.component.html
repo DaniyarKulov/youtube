@@ -1,10 +1,15 @@
 <div class="content">
-  <button> <mat-icon>video_library</mat-icon></button>
+  <img src="../../../../../assets/image/svg/logo.svg" alt="" />
   <div>
     <mat-form-field class="search" appearance="fill">
       <mat-label></mat-label>
       <input matInput />
     </mat-form-field>
+  </div>
+  <img (click)="toggle()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
+  <div class="logo">
+    <mat-card-title>Your name</mat-card-title>
+    <img class="logo__avatar" src="../../../../../assets/image/svg/login.svg" alt="" />
   </div>
   <button><mat-icon>filter_list</mat-icon></button>
   <p>{{ username$ | async }}</p>
