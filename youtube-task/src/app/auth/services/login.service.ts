@@ -17,7 +17,7 @@ export class LoginService {
     this.authUserLogin$$.next('');
   }
 
-  public authUser(username: string): void {
+  public authUsername(username: string): void {
     this.authUserLogin$$.next(username);
   }
 }
