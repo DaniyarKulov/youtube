@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, map, switchMap, tap } from 'rxjs';
 import { SearchItem } from 'src/app/core/model/search-item.model';
-import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
+import { VideosHttpService } from 'src/app/core/services/videos-http.service';
 
 @Component({
   selector: 'app-video-detail',
@@ -10,7 +10,7 @@ import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
   styleUrls: ['./video-detail.component.scss'],
 })
 export class VideoDetailComponent implements OnInit, OnDestroy {
-  public video!: SearchItem | undefined;
+  public video!: SearchItem | '';
   private subs = new Subscription();
 
   constructor(private route: ActivatedRoute, private videosHttpService: VideosHttpService) {}
@@ -23,7 +23,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
           switchMap((idFromRoute) =>
             this.videosHttpService.getItems().pipe(
               tap((videos) => {
-                this.video = videos.find((video) => video.id === idFromRoute) ?? undefined;
+                this.video = videos.find((video) => video.id === idFromRoute) ?? '';
               }),
             ),
           ),

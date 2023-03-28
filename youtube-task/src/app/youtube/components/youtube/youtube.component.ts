@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
 import { SearchItem } from 'src/app/core/model/search-item.model';
-import { VideosHttpService } from 'src/app/shared/services/videos-http.service';
-import { ViewStateService } from 'src/app/shared/services/view-state.service';
+import { VideosHttpService } from 'src/app/core/services/videos-http.service';
+import { ViewStateService } from 'src/app/core/services/view-state.service';
 
 @Component({
   selector: 'app-youtube',

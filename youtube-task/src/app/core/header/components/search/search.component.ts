@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
 
 @Component({
@@ -8,12 +7,11 @@ import { LoginService } from 'src/app/auth/services/login.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  public username$ = this.loginService.authUserLogin$;
+  public username$ = this.loginService.username$;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService) {}
 
-  public logoutRedirect(): void {
+  public logout(): void {
     this.loginService.logout();
-    this.router.navigate(['auth'], { replaceUrl: true }).catch();
   }
 }

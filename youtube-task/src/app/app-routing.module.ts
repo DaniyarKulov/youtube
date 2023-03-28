@@ -11,12 +11,12 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    canMatch: [isGuestGuard],
+    canActivate: [isGuestGuard],
     loadChildren: () => import('./auth/auth.module').then((module) => module.AuthModule),
   },
   {
     path: 'youtube',
-    canMatch: [isUserGuard],
+    canActivate: [isUserGuard],
     loadChildren: () => import('./youtube/youtube.module').then((module) => module.YoutubeModule),
   },
   {

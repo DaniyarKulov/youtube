@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewStateService } from 'src/app/shared/services/view-state.service';
+import { ViewStateService } from 'src/app/core/services/view-state.service';
 
 @Component({
   selector: 'app-header',
