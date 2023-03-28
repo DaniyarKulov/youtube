@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { LoginService } from 'src/app/auth/services/login.service';
 import { Component, Output, EventEmitter } from '@angular/core';
+import { LoginService } from '../../../../auth/services/login.service';
 
 @Component({
   selector: 'app-search',
@@ -8,14 +7,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
- @Output() public isToggledChanged = new EventEmitter<boolean>();
-   public username$ = this.loginService.username$;
+  @Output() public isToggledChanged = new EventEmitter<boolean>();
+  public username$ = this.loginService.username$;
   public isToggle: boolean = false;
-  
-  constructor(private loginService: LoginService, private router: Router) {}
+
+  constructor(private loginService: LoginService) {}
   public logout(): void {
     this.loginService.logout();
-
+  }
 
   public toggle(): void {
     this.isToggle = !this.isToggle;

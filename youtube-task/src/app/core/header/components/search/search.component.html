@@ -8,10 +8,8 @@
   </div>
   <img (click)="toggle()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
   <div class="logo">
-    <mat-card-title>Your name</mat-card-title>
+    <mat-card-title>{{ username$ | async }}</mat-card-title>
     <img class="logo__avatar" src="../../../../../assets/image/svg/login.svg" alt="" />
   </div>
-  <button><mat-icon>filter_list</mat-icon></button>
-  <p>{{ username$ | async }}</p>
   <button (click)="logout()">Logout</button>
 </div>

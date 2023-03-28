@@ -6,7 +6,7 @@
       height="{{ video.snippet.thumbnails.medium.height }}"
       alt="{{ video.snippet.title }}" />
     <div class="view">
-      <div *ngFor="let statistic of statiscticsAndIcons; trackBy: trackByIndex">
+      <div *ngFor="let statistic of statiscticsInfo; trackBy: trackByIndex">
         <p class="youtube__view">
           <mat-icon>{{ statistic.icon }}</mat-icon> {{ statistic.date }}</p
         >

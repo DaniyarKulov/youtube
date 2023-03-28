@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, map, switchMap, tap } from 'rxjs';
-import { SearchItem } from 'src/app/core/model/search-item.model';
-import { VideosHttpService } from 'src/app/core/services/videos-http.service';
+import { SearchItem } from '../../../core/model/search-item.model';
+import { VideosHttpService } from '../../../core/services/videos-http.service';
 
 @Component({
   selector: 'app-video-detail',

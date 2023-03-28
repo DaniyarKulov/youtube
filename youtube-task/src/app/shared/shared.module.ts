@@ -1,3 +1,4 @@
+import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +29,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatButtonModule,
+    MatCardModule,
   ],
 })
 export class SharedModule {}
