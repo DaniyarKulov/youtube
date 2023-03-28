@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
-import { SearchItem } from 'src/app/core/model/search-item.model';
-import { VideosHttpService } from 'src/app/core/services/videos-http.service';
-import { ViewStateService } from 'src/app/core/services/view-state.service';
+import { SortDirection } from '../../../core/constans/sort-direction.model';
+import { ViewStateService } from '../../../shared/services/view-state.service';
+import { VideosHttpService } from '../../../shared/services/videos-http.service';
+import { SearchItem } from '../../../core/model/search-item.model';
 
 @Component({
   selector: 'app-youtube',
@@ -11,25 +12,25 @@ import { ViewStateService } from 'src/app/core/services/view-state.service';
 })
 export class YoutubeComponent implements OnInit, OnDestroy {
   public items$ = this.videosHttpService.getItems();
-  public test$ = 'viewCountDecrease';
+  public viewCount = String(SortDirection.viewCountDecrease);
   public search = '';
   private subs = new Subscription();
 
-  constructor(private res: ViewStateService, private videosHttpService: VideosHttpService) {}
+  constructor(private viewStateService: ViewStateService, private videosHttpService: VideosHttpService) {}
 
   public ngOnInit(): void {
     this.subs.add(
-      this.res.sort$
+      this.viewStateService.sort$
         .pipe(
           tap((item) => {
-            this.test$ = item;
+            this.viewCount = item;
           }),
         )
         .subscribe(),
     );
 
     this.subs.add(
-      this.res.search$
+      this.viewStateService.search$
         .pipe(
           tap((item) => {
             this.search = item;

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ViewStateService } from 'src/app/core/services/view-state.service';
+import { Component, Input } from '@angular/core';
+import { ViewStateService } from '../../../../shared/services/view-state.service';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +7,19 @@ import { ViewStateService } from 'src/app/core/services/view-state.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input() public isSortAvailable: boolean = false;
+
   constructor(private viewStateService: ViewStateService) {}
 
   public searchValueChange(searchValue: string): void {
     this.viewStateService.changeSearchValue(searchValue);
   }
 
-  public sortValueChange(sortValue: string): void {
+  public onSortOrderChange(sortValue: string): void {
     this.viewStateService.changeValue(sortValue);
+  }
+
+  public toggleSortingAvailability(isSortAvailable: boolean): void {
+    this.isSortAvailable = isSortAvailable;
   }
 }
