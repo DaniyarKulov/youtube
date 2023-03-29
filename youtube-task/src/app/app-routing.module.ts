@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { isUserGuard } from './auth/guards/is-user.guard';
+import { IsUserGuard } from './auth/guards/is-user.guard';
 import { isGuestGuard } from './auth/guards/is-guest.guard';
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'youtube',
-    canActivate: [isUserGuard],
+    canActivate: [IsUserGuard],
     loadChildren: () => import('./youtube/youtube.module').then((module) => module.YoutubeModule),
   },
   {

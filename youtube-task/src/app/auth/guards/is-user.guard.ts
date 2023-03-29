@@ -1,7 +1,13 @@
-import { inject } from '@angular/core';
-import { Router, UrlTree } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 
-export const isUserGuard = (): boolean | UrlTree => {
-  const router = inject(Router);
-  return localStorage.getItem('token') ? true : router.createUrlTree(['auth']);
-};
+@Injectable({
+  providedIn: 'root',
+})
+export class IsUserGuard implements CanActivate {
+  constructor(private router: Router) {}
+
+  public canActivate(): boolean | UrlTree {
+    return !!localStorage.getItem('token') || this.router.createUrlTree(['auth']);
+  }
+}
