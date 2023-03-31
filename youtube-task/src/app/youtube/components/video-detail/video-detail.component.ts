@@ -21,7 +21,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
         .pipe(
           map((paramMap) => paramMap.get('id') ?? ''),
           switchMap((idFromRoute) =>
-            this.videosHttpService.getItems().pipe(
+            this.videosHttpService.getVideos('').pipe(
               tap((videos) => {
                 this.video = videos.find((video) => video.id === idFromRoute) ?? '';
               }),

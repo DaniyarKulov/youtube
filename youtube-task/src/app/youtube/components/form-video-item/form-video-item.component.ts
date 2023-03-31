@@ -13,6 +13,7 @@ interface StatiscticsInfo {
 })
 export class FormVideoItemComponent implements OnInit {
   @Input() public video!: SearchItem;
+
   public statiscticsInfo: StatiscticsInfo[] = [];
   private videoStatistics: SearchItem[] = [];
   private iconsArr: string[] = ['visibility', 'thumb_up', 'thumb_down', 'favorite', 'forum'];
