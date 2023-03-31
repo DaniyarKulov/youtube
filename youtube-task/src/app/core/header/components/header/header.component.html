@@ -1,4 +1,4 @@
-<app-search (isToggledChanged)="toggleSortingAvailability($event)"></app-search>
+<app-search (isSortComponentChange)="toggleSortingAvailability($event)"></app-search>
 <app-sort
   *ngIf="isSortAvailable"
   (sortOrderChange)="onSortOrderChange($event)"
