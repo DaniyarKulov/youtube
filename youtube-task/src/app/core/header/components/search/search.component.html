@@ -1,11 +1,11 @@
 <div class="content">
   <img src="../../../../../assets/image/svg/logo.svg" alt="" />
-  <div>
+  <form [formGroup]="searchForm">
     <mat-form-field class="search" appearance="fill">
       <mat-label></mat-label>
-      <input matInput />
+      <input [formControl]="searchContorl" matInput />
     </mat-form-field>
-  </div>
+  </form>
   <img (click)="toggle()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
   <div class="logo">
     <mat-card-title>{{ username$ | async }}</mat-card-title>

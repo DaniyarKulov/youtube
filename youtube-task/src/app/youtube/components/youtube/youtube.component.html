@@ -1,7 +1,7 @@
 <mat-card>
   <ul class="ul">
     <app-form-video-item
-      *ngFor="let itemApi of itemsApi$ | async; filter: search | sort : viewCount"
+      *ngFor="let itemApi of itemsApi$ | async; filter: search | sort : test$; trackBy: trackById"
       class="form"
       [appBorderColor]="itemApi.snippet.publishedAt"
       [video]="itemApi"></app-form-video-item>

@@ -11,6 +11,7 @@ export class YoutubeInterceptor implements HttpInterceptor {
       setParams: { key: environment.API_KEY },
       url: URL,
     });
+
     return next.handle(updatedRequest);
   }
 }
