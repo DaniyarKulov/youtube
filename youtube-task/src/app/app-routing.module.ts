@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./youtube/youtube.module').then((module) => module.YoutubeModule),
   },
   {
+    path: 'create',
+    loadChildren: () => import('./core/add-card/add-card.module').then((module) => module.AddCardModule),
+  },
+  {
     path: '404',
     loadChildren: () => import('./core/not-found/not-found.module').then((module) => module.NotFoundModule),
   },

@@ -26,7 +26,7 @@ export class AuthLoginComponent implements OnInit {
     this.loginService.getUsername(this.loginForm.controls.email.value ?? '');
     this.router.navigate(['/youtube']).catch();
   }
-
+  // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
   public showPassword(): void {
     this.isPasswordHide = !this.isPasswordHide;
   }

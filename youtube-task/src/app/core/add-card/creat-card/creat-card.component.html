@@ -1,1 +1,34 @@
-<p>creat-card works!</p>
+<div class="form">
+  <form [formGroup]="videoForm" name="loginForm" class="form__group" (submit)="onSubmit()">
+    <mat-card-title>Create new card</mat-card-title>
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput required />
+      <mat-error *ngIf="titleControl.hasError('required')">Please enter a title</mat-error>
+      <mat-error *ngIf="titleControl.hasError('minlength')">The title is too short</mat-error>
+      <mat-error *ngIf="titleControl.hasError('maxlength')">The title is too long</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input formControlName="description" matInput />
+      <mat-error *ngIf="desciptionControl.hasError('maxlength')">The description is too long</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Img</mat-label>
+      <input formControlName="img" matInput required />
+      <mat-error *ngIf="imgControl.hasError('required')">Please enter a link to the image</mat-error>
+      <mat-error *ngIf="imgControl.hasError('pattern')">The image link is invalid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Link video</mat-label>
+      <input formControlName="link" matInput required />
+      <mat-error *ngIf="linkControl.hasError('required')">Please enter a link to the video</mat-error>
+      <mat-error *ngIf="linkControl.hasError('pattern')">The video link is invalid</mat-error>
+    </mat-form-field>
+    <button class="form__button" type="submit" [disabled]="videoForm.invalid" mat-raised-button color="primary"
+      >Create card</button
+    >
+  </form>
+</div>
+
+<button routerLink="/youtube">назад</button>

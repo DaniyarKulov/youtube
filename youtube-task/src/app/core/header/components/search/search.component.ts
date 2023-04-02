@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
       search: new FormControl<string | null>('', [Validators.maxLength(250)]),
     });
 
-    this.searchContorl.valueChanges
+    this.searchControl.valueChanges
       .pipe(
         debounceTime(800),
         filter((search: string | null) => (search ? search.length > 3 : search === '')),
@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
       .subscribe();
   }
 
-  public get searchContorl(): FormControl<string | null> {
+  public get searchControl(): FormControl<string | null> {
     return this.searchForm.controls.search;
   }
 

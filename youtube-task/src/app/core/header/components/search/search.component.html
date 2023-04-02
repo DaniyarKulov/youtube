@@ -3,7 +3,8 @@
   <form [formGroup]="searchForm">
     <mat-form-field class="search" appearance="fill">
       <mat-label></mat-label>
-      <input [formControl]="searchContorl" matInput />
+      <input [formControl]="searchControl" matInput />
+      <span *ngIf="searchControl.hasError('required')">asdasds</span>
     </mat-form-field>
   </form>
   <img (click)="toggle()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
@@ -12,5 +13,5 @@
     <img class="logo__avatar" src="../../../../../assets/image/svg/login.svg" alt="" />
   </div>
   <button (click)="logout()">Logout</button>
-  <button>Создать карточку</button>
+  <button routerLink="/create">Создать карточку</button>
 </div>
