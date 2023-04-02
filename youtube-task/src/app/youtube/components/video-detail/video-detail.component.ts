@@ -24,7 +24,6 @@ export class VideoDetailComponent implements OnInit, OnDestroy {
             this.videosHttpService.getVideosById(idFromRoute).pipe(
               tap((videos) => {
                 this.video = videos.items.find((video) => video.id === idFromRoute) ?? '';
-                console.log(this.video);
               }),
             ),
           ),

@@ -26,7 +26,6 @@ export class VideosHttpService {
         }),
       );
   }
-
   public getVideosById(id: string): Observable<Video> {
     return this.http.get<Video>('videos', {
       params: {

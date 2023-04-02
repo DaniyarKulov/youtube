@@ -16,7 +16,7 @@ export class HeaderComponent {
   }
 
   public onSortOrderChange(sortValue: string): void {
-    this.viewStateService.changeValue(sortValue);
+    this.viewStateService.getSortedVideos(sortValue);
   }
 
   public toggleSortingAvailability(isSortAvailable: boolean): void {

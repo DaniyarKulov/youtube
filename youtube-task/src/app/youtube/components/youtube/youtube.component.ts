@@ -18,16 +18,17 @@ export class YoutubeComponent implements OnInit, OnDestroy {
   constructor(private viewStateService: ViewStateService) {}
 
   public ngOnInit(): void {
-    this.subs.add(
-      this.viewStateService.sort$
-        .pipe(
-          tap((item) => {
-            this.viewCount = item;
-          }),
-        )
-        .subscribe(),
-    );
+    // this.subs.add(
+    //   this.viewStateService.sort$
+    //     .pipe(
+    //       tap((item) => {
+    //         console.log(item);
 
+    //         this.viewCount = item;
+    //       }),
+    //     )
+    //     .subscribe(),
+    // );
     this.subs.add(
       this.viewStateService.search$
         .pipe(

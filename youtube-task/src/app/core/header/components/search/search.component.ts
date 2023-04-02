@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
     this.searchForm = new FormGroup({
       search: new FormControl<string | null>('', [Validators.maxLength(250)]),
     });
+
     this.searchContorl.valueChanges
       .pipe(
         debounceTime(800),
