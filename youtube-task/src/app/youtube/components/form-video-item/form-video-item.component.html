@@ -1,13 +1,13 @@
-<mat-card-content>
-  <li *ngIf="video.snippet" class="youtube">
+<li *ngIf="video.snippet" class="youtube">
+  <mat-card-content class="youtube__card">
     <img
       ngSrc="{{ video.snippet.thumbnails.medium.url }}"
       width="{{ video.snippet.thumbnails.medium.width }}"
       height="{{ video.snippet.thumbnails.medium.height }}"
-      alt="" />
+      alt="{{ video.snippet.title }}" />
     <div class="view">
       <div *ngFor="let statistic of statiscticsInfo; trackBy: trackByIndex">
-        <p>
+        <p class="youtube__view">
           <mat-icon>{{ statistic.icon }}</mat-icon> {{ statistic.date }}</p
         >
       </div>
@@ -15,7 +15,7 @@
     <mat-card-title>
       <p class="youtube__title">{{ video.snippet.title }}</p>
     </mat-card-title>
-    <button mat-raised-button color="primary">More...</button>
+    <button routerLink="/youtube/{{ video.id }}" mat-raised-button color="primary">More...</button>
     <div class="line"></div>
-  </li>
-</mat-card-content>
+  </mat-card-content>
+</li>

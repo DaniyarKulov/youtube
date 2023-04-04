@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
+import { ViewStateService } from '../../../core/services/view-state.service';
+import { VideosHttpService } from '../../../core/services/videos-http.service';
 import { SortDirection } from '../../../core/constans/sort-direction.model';
-import { ViewStateService } from '../../../shared/services/view-state.service';
-import { VideosHttpService } from '../../../shared/services/videos-http.service';
 import { SearchItem } from '../../../core/model/search-item.model';
 
 @Component({

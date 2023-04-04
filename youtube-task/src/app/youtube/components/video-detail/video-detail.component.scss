@@ -1,0 +1,30 @@
+.video {
+  display: grid;
+  grid-template-columns: 32px 729px 360px;
+  margin: 30px 0;
+  &__info {
+    padding: 35px;
+  }
+  &__button {
+    align-self: flex-start;
+  }
+  &__statistics {
+    display: flex;
+    margin-top: 15px;
+    gap: 20px;
+  }
+  &__description {
+    height: 300px;
+    overflow: auto;
+    box-sizing: border-box;
+    width: 400px;
+  }
+  &__count {
+    display: flex;
+    align-items: center;
+  }
+}
+.container {
+  display: flex;
+  justify-content: center;
+}

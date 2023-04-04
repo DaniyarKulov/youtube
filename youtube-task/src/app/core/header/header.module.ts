@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
-import { SearchComponent } from './components/search/search.component';
 import { SortComponent } from './components/sort/sort.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SearchComponent, SortComponent],
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatIconModule, FormsModule, MatCardModule],
-  exports: [HeaderComponent, SearchComponent],
+  declarations: [HeaderComponent, SortComponent, SearchComponent],
+  imports: [CommonModule, SharedModule],
+  exports: [HeaderComponent],
 })
 export class HeaderModule {}

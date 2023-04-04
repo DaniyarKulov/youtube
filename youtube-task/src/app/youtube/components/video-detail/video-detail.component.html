@@ -1,0 +1,35 @@
+<div class="container">
+  <div *ngIf="video" class="video">
+    <mat-card-actions>
+      <button routerLink="/youtube" class="video__button"><</button>
+    </mat-card-actions>
+    <div>
+      <img
+        class="video__image"
+        mat-card-image
+        ngSrc="{{ video.snippet.thumbnails.maxres.url }}"
+        width="729"
+        height="461"
+        alt="{{ video.snippet.title }}" />
+    </div>
+    <div class="video__info">
+      <mat-card-title>
+        {{ video.snippet.title }}
+      </mat-card-title>
+      <p>{{ video.snippet.publishedAt | date : 'EEEE, MMMM d, y' }}</p>
+      <mat-card-content>
+        <div class="video__description">
+          Description: <br />
+          {{ video.snippet.description }}
+        </div>
+      </mat-card-content>
+      <div class="video__statistics">
+        <p class="video__count"> <mat-icon>visibility</mat-icon> {{ video.statistics.viewCount }}</p>
+        <p class="video__count"> <mat-icon>thumb_up</mat-icon> {{ video.statistics.likeCount }}</p>
+        <p class="video__count"> <mat-icon>favorite</mat-icon> {{ video.statistics.favoriteCount }}</p>
+        <p class="video__count"> <mat-icon>thumb_down</mat-icon> {{ video.statistics.dislikeCount }}</p>
+        <p class="video__count"> <mat-icon>forum</mat-icon> {{ video.statistics.commentCount }}</p>
+      </div>
+    </div>
+  </div>
+</div>
