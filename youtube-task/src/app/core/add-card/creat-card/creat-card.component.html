@@ -25,6 +25,12 @@
       <mat-error *ngIf="linkControl.hasError('required')">Please enter a link to the video</mat-error>
       <mat-error *ngIf="linkControl.hasError('pattern')">The video link is invalid</mat-error>
     </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Creation date</mat-label>
+      <input formControlName="creationDate" type="date" matInput required />
+      <mat-error *ngIf="dateControl.hasError('required')">Please enter a creation date</mat-error>
+      <mat-error *ngIf="dateControl.hasError('dateValid')">The date is invalid</mat-error>
+    </mat-form-field>
     <button class="form__button" type="submit" [disabled]="videoForm.invalid" mat-raised-button color="primary"
       >Create card</button
     >

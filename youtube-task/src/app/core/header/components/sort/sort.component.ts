@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { VideosService } from '../../../services/videos.service';
 import { SortDirection } from '../../../constans/sort-direction.model';
 
 @Component({
@@ -6,13 +8,27 @@ import { SortDirection } from '../../../constans/sort-direction.model';
   templateUrl: './sort.component.html',
   styleUrls: ['./sort.component.scss'],
 })
-export class SortComponent {
+export class SortComponent implements OnInit {
+  @Output() public searchEventEmitter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public sortOrderChange: EventEmitter<string> = new EventEmitter<string>();
   public sortByDateDirection = '';
   public sortByCountDirection = '';
+  public filterForm!: FormGroup<{ filter: FormControl<string | null> }>;
 
-  @Output() public searchEventEmitter: EventEmitter<string> = new EventEmitter<string>();
+  constructor(private videosService: VideosService) {}
 
-  @Output() public sortOrderChange: EventEmitter<string> = new EventEmitter<string>();
+  public ngOnInit(): void {
+    this.filterForm = new FormGroup({
+      filter: new FormControl<string | null>(''),
+    });
+    this.filterControl.valueChanges.subscribe((searchValue) => {
+      this.videosService.changeSortValue(searchValue ?? '');
+    });
+  }
+
+  public get filterControl(): FormControl<string | null> {
+    return this.filterForm.controls.filter;
+  }
 
   public changeDateDirection(): void {
     if (this.sortByDateDirection === '' || this.sortByDateDirection === SortDirection.dateDecrease) {

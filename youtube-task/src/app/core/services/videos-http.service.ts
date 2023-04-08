@@ -15,7 +15,7 @@ export class VideosHttpService {
       .get<SearchResponse>('search', {
         params: {
           type: 'video',
-          maxResults: 16,
+          maxResults: 2,
           q: searchValue,
         },
       })
