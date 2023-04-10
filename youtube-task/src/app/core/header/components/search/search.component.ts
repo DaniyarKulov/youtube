@@ -15,7 +15,7 @@ import { LoginService } from '../../../../auth/services/login.service';
 export class SearchComponent implements OnInit {
   @Output() public isToggledChanged = new EventEmitter<boolean>();
   public username$ = this.loginService.username$;
-  public isToggle: boolean = false;
+  public isVisibleSortComponent: boolean = false;
   public searchForm!: FormGroup<{ search: FormControl<string | null> }>;
 
   constructor(
@@ -41,13 +41,7 @@ export class SearchComponent implements OnInit {
       )
       .subscribe();
 
-    combineLatest([this.viewStateService.sort$, this.viewStateService.videos$])
-      .pipe(
-        map(([sort, videos]) => {
-          this.sortVideos(sort, videos);
-        }),
-      )
-      .subscribe();
+
   }
 
   public get searchControl(): FormControl<string | null> {
@@ -58,24 +52,9 @@ export class SearchComponent implements OnInit {
     this.loginService.logout();
   }
 
-  public toggle(): void {
-    this.isToggle = !this.isToggle;
-    this.isToggledChanged.emit(this.isToggle);
+  public changeVisibility(): void {
+    this.isVisibleSortComponent = !this.isVisibleSortComponent;
+    this.isToggledChanged.emit(this.isVisibleSortComponent);
   }
 
-  private sortVideos(sortBy: string, videos: SearchItem[]): SearchItem[] {
-    if (sortBy === SortDirection.viewCountDecrease) {
-      videos?.sort((a, b) => +a.statistics.viewCount - +b.statistics.viewCount);
-    }
-    if (sortBy === SortDirection.viewCountIncrease) {
-      videos?.sort((a, b) => +b.statistics.viewCount - +a.statistics.viewCount);
-    }
-    if (sortBy === SortDirection.dateDecrease) {
-      videos?.sort((a, b) => Date.parse(a.snippet.publishedAt) - Date.parse(b.snippet.publishedAt));
-    }
-    if (sortBy === SortDirection.dateIncrease) {
-      videos?.sort((a, b) => Date.parse(b.snippet.publishedAt) - Date.parse(a.snippet.publishedAt));
-    }
-    return videos;
-  }
 }

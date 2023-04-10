@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, tap } from 'rxjs';
+import { Subscription, combineLatest, tap } from 'rxjs';
+import { SortCriterias } from '../../../shared/sort-criterias.type';
+import { SortVideosService } from '../../../core/services/sort-videos.service';
 import { VideosService } from '../../../core/services/videos.service';
 import { SearchItem } from '../../../core/model/search-item.model';
-import { ViewStateService } from '../../../core/services/view-state.service';
 import { SortDirection } from '../../../core/constans/sort-direction.model';
 
 @Component({
@@ -12,40 +13,29 @@ import { SortDirection } from '../../../core/constans/sort-direction.model';
 })
 export class YoutubeComponent implements OnInit, OnDestroy {
   public viewCount = String(SortDirection.viewCountDecrease);
-  public search = '';
-  public itemsApi$ = this.videosService.videos$;
+  public videos: SearchItem[] = [];
+  public sortOptions: SortCriterias | null = null;
   private subs = new Subscription();
 
-  constructor(private viewStateService: ViewStateService, private videosService: VideosService) {}
+  constructor(private sortVideosService: SortVideosService, private videosService: VideosService) {}
 
   public ngOnInit(): void {
     this.subs.add(
-      this.viewStateService.sort$
+      combineLatest([this.videosService.videos$, this.sortVideosService.sort$])
         .pipe(
-          tap((item) => {
-            console.log(item);
-
-            this.viewCount = item;
+          tap(([videos, sort]) => {
+            this.videos = videos;
+            this.sortOptions = sort;
           }),
         )
         .subscribe(),
     );
-    this.subs.add(
-      this.viewStateService.search$
-        .pipe(
-          tap((item) => {
-            this.search = item;
-          }),
-        )
-        .subscribe(),
-    );
-  }
-
-  public ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 
   public trackById(_: number, item: SearchItem): string {
     return item.id;
+  }
+  public ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

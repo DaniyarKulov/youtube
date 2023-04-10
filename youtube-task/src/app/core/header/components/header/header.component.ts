@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SortVideosService } from '../../../services/sort-videos.service';
 import { ViewStateService } from '../../../services/view-state.service';
 
 @Component({
@@ -9,14 +10,10 @@ import { ViewStateService } from '../../../services/view-state.service';
 export class HeaderComponent {
   @Input() public isSortAvailable: boolean = false;
 
-  constructor(private viewStateService: ViewStateService) {}
+  constructor(private viewStateService: ViewStateService, private sortVideosService: SortVideosService) {}
 
   public searchValueChange(searchValue: string): void {
     this.viewStateService.changeSearchValue(searchValue);
-  }
-
-  public onSortOrderChange(sortValue: string): void {
-    this.viewStateService.changeValue(sortValue);
   }
 
   public toggleSortingAvailability(isSortAvailable: boolean): void {

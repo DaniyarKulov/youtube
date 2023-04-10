@@ -1,5 +1,5 @@
 <div class="content">
-  <img src="../../../../../assets/image/svg/logo.svg" alt="" />
+  <img routerLink="/youtube" src="../../../../../assets/image/svg/logo.svg" alt="" />
   <form [formGroup]="searchForm">
     <mat-form-field class="search" appearance="fill">
       <mat-label></mat-label>
@@ -7,7 +7,7 @@
       <span *ngIf="searchControl.hasError('required')">asdasds</span>
     </mat-form-field>
   </form>
-  <img (click)="toggle()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
+  <img (click)="changeVisibility()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
   <div class="logo">
     <mat-card-title>{{ username$ | async }}</mat-card-title>
     <img class="logo__avatar" src="../../../../../assets/image/svg/login.svg" alt="" />
