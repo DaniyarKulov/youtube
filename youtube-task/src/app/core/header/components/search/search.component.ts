@@ -9,6 +9,7 @@ import { LoginService } from '../../../../auth/services/login.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
+
 export class SearchComponent implements OnInit {
   @Output() public isToggledChanged = new EventEmitter<boolean>();
   public username$ = this.loginService.username$;

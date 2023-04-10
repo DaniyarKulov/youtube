@@ -30,7 +30,7 @@ export class AuthLoginComponent implements OnInit {
 
   public onLogin(): void {
     localStorage.setItem('token', this.loginForm.controls.email.value ?? '');
-    this.loginService.getUsername(this.loginForm.controls.email.value ?? '');
+    this.loginService.setUsername(this.loginForm.controls.email.value ?? '');
     this.router.navigate(['/youtube']).catch();
   }
   public showPassword(): void {

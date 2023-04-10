@@ -20,7 +20,7 @@ export class LoginService {
     this.router.navigate(['auth'], { replaceUrl: true }).catch();
   }
 
-  public getUsername(username: string): void {
+  public setUsername(username: string): void {
     this.username$$.next(username);
   }
 }
