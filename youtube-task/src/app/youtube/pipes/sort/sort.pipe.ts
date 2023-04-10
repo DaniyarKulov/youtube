@@ -8,8 +8,6 @@ import { SearchItem } from '../../../core/model/search-item.model';
 })
 export class SortPipe implements PipeTransform {
   public transform(videos: SearchItem[] | null, sortCriterias: SortCriterias | null): SearchItem[] | null {
-    console.log(sortCriterias);
-
     return videos && sortCriterias
       ? videos.sort((a, b) => sortMap[sortCriterias.type](a, b) * sortCriterias.direction)
       : videos ?? [];
