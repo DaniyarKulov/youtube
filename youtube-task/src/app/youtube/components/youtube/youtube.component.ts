@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, combineLatest, tap } from 'rxjs';
 import { SortCriterias } from '../../../shared/sort-criterias.type';
 import { SortVideosService } from '../../../core/services/sort-videos.service';
@@ -14,10 +14,14 @@ import { SortDirection } from '../../../core/constans/sort-direction.model';
 export class YoutubeComponent implements OnInit, OnDestroy {
   public viewCount = String(SortDirection.viewCountDecrease);
   public videos: SearchItem[] = [];
-  public sortOptions: SortCriterias | null = null;
+  public sortOptions: SortCriterias = { type: 'views', direction: 1 };
   private subs = new Subscription();
 
-  constructor(private sortVideosService: SortVideosService, private videosService: VideosService) {}
+  constructor(
+    private sortVideosService: SortVideosService,
+    private videosService: VideosService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   public ngOnInit(): void {
     this.subs.add(
@@ -26,6 +30,7 @@ export class YoutubeComponent implements OnInit, OnDestroy {
           tap(([videos, sort]) => {
             this.videos = videos;
             this.sortOptions = sort;
+            this.cdr.detectChanges();
           }),
         )
         .subscribe(),

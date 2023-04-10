@@ -23,10 +23,8 @@ export class ViewStateService {
   }
 
   public getVideos(searchValue: string): Observable<Video> {
-    return this.videosHttpService.getVideos(searchValue).pipe(
-      tap((videos) => {
-        return this.setVideos(videos.items);
-      }),
-    );
+    return this.videosHttpService
+      .getVideos(searchValue)
+      .pipe(tap((searchResponse) => this.videos$$.next(searchResponse.items)));
   }
 }

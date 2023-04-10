@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SortCriterias } from '../../../../../shared/sort-criterias.type';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sort-button',
@@ -7,20 +6,13 @@ import { SortCriterias } from '../../../../../shared/sort-criterias.type';
   styleUrls: ['./sort-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SortButtonComponent implements OnInit {
-  @Output() public sortCriteriasState = new EventEmitter<SortCriterias>();
+export class SortButtonComponent {
+  @Output() public sortCriteriasState = new EventEmitter<number>();
   @Input() public sortType = '';
-  public sortState: SortCriterias = { type: '', direction: 1 };
-
-  public ngOnInit(): void {
-    this.sortState.type = this.sortType;
-  }
-  public sortCriteriasChange(criteriasValue: string): void {
-    this.sortType = criteriasValue;
-  }
+  public sortDirection = 1;
 
   public changeDirection(): void {
-    this.sortState.direction *= -1;
-    this.sortCriteriasState.emit(this.sortState);
+    this.sortDirection *= -1;
+    this.sortCriteriasState.emit(this.sortDirection);
   }
 }

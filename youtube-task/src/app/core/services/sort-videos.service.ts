@@ -6,7 +6,7 @@ import { SortCriterias } from '../../shared/sort-criterias.type';
   providedIn: 'root',
 })
 export class SortVideosService {
-  private sort$$ = new BehaviorSubject<SortCriterias>({ type: '', direction: 1 });
+  private sort$$ = new BehaviorSubject<SortCriterias>({ type: 'views', direction: 1 });
   public sort$ = this.sort$$.asObservable();
 
   public changeSortValue(sortCriteria: SortCriterias): void {

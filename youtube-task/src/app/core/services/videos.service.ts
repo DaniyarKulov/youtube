@@ -14,6 +14,7 @@ export class VideosService {
     ),
   );
   constructor(private viewStateService: ViewStateService) {}
+
   public changeFilterValue(searchValue: string): void {
     this.filter$$.next(searchValue);
   }
