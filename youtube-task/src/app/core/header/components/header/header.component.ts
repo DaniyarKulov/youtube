@@ -15,7 +15,7 @@ export class HeaderComponent {
     this.viewStateService.changeSearchValue(searchValue);
   }
 
-  public toggleSortingAvailability(isSortAvailable: boolean): void {
+  public onSearchAvailabilityToggle(isSortAvailable: boolean): void {
     this.isSortAvailable = isSortAvailable;
   }
 }

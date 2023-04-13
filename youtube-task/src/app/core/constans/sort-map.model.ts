@@ -1,6 +1,6 @@
 import { SortMap } from '../model/sort-map.type';
 
 export const sortMap: SortMap = {
-  views: (a, b) => +a.statistics.viewCount - +b.statistics.viewCount,
-  data: (a, b) => Date.parse(a.snippet.publishedAt) - Date.parse(b.snippet.publishedAt),
+  views: (a, b) => +b.statistics.viewCount - +a.statistics.viewCount,
+  data: (a, b) => +new Date(b.snippet.publishedAt) - +new Date(a.snippet.publishedAt),
 };

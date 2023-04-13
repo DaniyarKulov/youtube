@@ -33,6 +33,7 @@ export class AuthLoginComponent implements OnInit {
     this.loginService.setUsername(this.loginForm.controls.email.value ?? '');
     this.router.navigate(['/youtube']).catch();
   }
+
   public showPassword(): void {
     this.isPasswordHide = !this.isPasswordHide;
   }

@@ -1,6 +1,7 @@
 import { debounceTime, filter, startWith, switchMap } from 'rxjs';
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SortDirection } from '../../../constans/sort-direction.model';
 import { ViewStateService } from '../../../services/view-state.service';
 import { LoginService } from '../../../../auth/services/login.service';
 
@@ -9,9 +10,8 @@ import { LoginService } from '../../../../auth/services/login.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-
 export class SearchComponent implements OnInit {
-  @Output() public isToggledChanged = new EventEmitter<boolean>();
+  @Output() public isSortAvailabilityChanged = new EventEmitter<boolean>();
   public username$ = this.loginService.username$;
   public isVisibleSortComponent: boolean = false;
   public searchForm!: FormGroup<{ search: FormControl<string | null> }>;
@@ -26,12 +26,11 @@ export class SearchComponent implements OnInit {
       .pipe(
         startWith(''),
         debounceTime(800),
-        filter((search: string | null) => (search ? search.length > 3 : search === '')),
+        filter((search: string | null) => (search ? search.length > SortDirection.number : search === '')),
         switchMap((search) => this.viewStateService.getVideos(search ?? '')),
       )
       .subscribe();
   }
-
   public get searchControl(): FormControl<string | null> {
     return this.searchForm.controls.search;
   }
@@ -42,6 +41,6 @@ export class SearchComponent implements OnInit {
 
   public changeVisibility(): void {
     this.isVisibleSortComponent = !this.isVisibleSortComponent;
-    this.isToggledChanged.emit(this.isVisibleSortComponent);
+    this.isSortAvailabilityChanged.emit(this.isVisibleSortComponent);
   }
 }

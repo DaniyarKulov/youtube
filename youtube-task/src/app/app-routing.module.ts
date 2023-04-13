@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    loadChildren: () => import('./core/add-card/add-card.module').then((module) => module.AddCardModule),
+    loadChildren: () => import('./add-card/add-card.module').then((module) => module.AddCardModule),
   },
   {
     path: '404',

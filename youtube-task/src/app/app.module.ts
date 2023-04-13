@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './auth/auth.module';
 import { YoutubeInterceptor } from './youtube/module/youtube.interceptor';
 
 @NgModule({
@@ -19,14 +18,6 @@ import { YoutubeInterceptor } from './youtube/module/youtube.interceptor';
     },
   ],
   bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    CoreModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AuthModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, CoreModule, HttpClientModule, BrowserAnimationsModule],
 })
 export class AppModule {}

@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HeaderModule } from './header/header.module';
 import { HeaderComponent } from './header/components/header/header.component';
 import { SharedModule } from '../shared/shared.module';
-import { AddCardModule } from './add-card/add-card.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HeaderModule, AddCardModule],
+  imports: [CommonModule, HeaderModule],
   exports: [HeaderComponent, SharedModule],
 })
 export class CoreModule {}

@@ -1,11 +1,9 @@
 <form [formGroup]="filterForm">
   <div class="sort">
     <p>sorting by:</p>
+    <app-sort-button (sortCriteriasState)="sort({ type: 'data', direction: $event })" sortType="date"></app-sort-button>
     <app-sort-button
       (sortCriteriasState)="sort({ type: 'views', direction: $event })"
-      sortType="date"></app-sort-button>
-    <app-sort-button
-      (sortCriteriasState)="sort({ type: 'data', direction: $event })"
       sortType="views"></app-sort-button>
     <p>by word or sentance:</p>
     <input mat-input type="search" [formControl]="filterControl" />

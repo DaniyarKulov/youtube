@@ -10,7 +10,7 @@ import { VideosService } from '../../../services/videos.service';
   styleUrls: ['./sort.component.scss'],
 })
 export class SortComponent implements OnInit {
-  @Output() public searchEventEmitter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public searchQueryChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() public sortOrderChange: EventEmitter<string> = new EventEmitter<string>();
   public filterForm!: FormGroup<{ filter: FormControl<string | null> }>;
 

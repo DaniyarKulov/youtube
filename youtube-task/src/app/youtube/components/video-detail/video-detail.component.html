@@ -7,9 +7,9 @@
       <img
         class="video__image"
         mat-card-image
-        ngSrc="{{ video.snippet.thumbnails.default }}"
-        width="729"
-        height="461"
+        ngSrc="{{ video.snippet.thumbnails.high.url }}"
+        width="{{ video.snippet.thumbnails.high.width }}"
+        height="{{ video.snippet.thumbnails.high.height }}"
         alt="{{ video.snippet.title }}" />
     </div>
     <div class="video__info">

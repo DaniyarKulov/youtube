@@ -1,6 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, combineLatest, tap } from 'rxjs';
-import { SortCriterias } from '../../../shared/sort-criterias.type';
+import { Component } from '@angular/core';
 import { SortVideosService } from '../../../core/services/sort-videos.service';
 import { VideosService } from '../../../core/services/videos.service';
 import { SearchItem } from '../../../core/model/search-item.model';
@@ -11,36 +9,13 @@ import { SortDirection } from '../../../core/constans/sort-direction.model';
   templateUrl: './youtube.component.html',
   styleUrls: ['./youtube.component.scss'],
 })
-export class YoutubeComponent implements OnInit, OnDestroy {
+export class YoutubeComponent {
   public viewCount = String(SortDirection.viewCountDecrease);
-  public videos: SearchItem[] = [];
-  public sortOptions: SortCriterias = { type: 'views', direction: 1 };
-  private subs = new Subscription();
-
-  constructor(
-    private sortVideosService: SortVideosService,
-    private videosService: VideosService,
-    private cdr: ChangeDetectorRef,
-  ) {}
-
-  public ngOnInit(): void {
-    this.subs.add(
-      combineLatest([this.videosService.videos$, this.sortVideosService.sort$])
-        .pipe(
-          tap(([videos, sort]) => {
-            this.videos = videos;
-            this.sortOptions = sort;
-            this.cdr.detectChanges();
-          }),
-        )
-        .subscribe(),
-    );
-  }
+  public videos$ = this.videosService.videos$;
+  public sortOptions$ = this.sortVideosService.sort$;
+  constructor(private sortVideosService: SortVideosService, private videosService: VideosService) {}
 
   public trackById(_: number, item: SearchItem): string {
     return item.id;
-  }
-  public ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 }

@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SortButtonComponent {
+  @Input() public sortType: null | string = null;
   @Output() public sortCriteriasState = new EventEmitter<number>();
-  @Input() public sortType = '';
   public sortDirection = 1;
 
   public changeDirection(): void {
