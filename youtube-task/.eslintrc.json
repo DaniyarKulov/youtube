@@ -8,6 +8,7 @@
         "project": ["**/tsconfig.json"],
         "createDefaultProgram": true
       },
+      // "plugins": ["ngrx"],
       "extends": [
         "airbnb-base",
         "airbnb-typescript/base",
@@ -16,10 +17,12 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
+        // "plugin:ngrx/recommended",
         "prettier",
         "plugin:prettier/recommended"
       ],
       "rules": {
+        // "ngrx/select-style": "error",
         "@typescript-eslint/array-type": [
           "error",
           {
@@ -113,6 +116,10 @@
           }
         ]
       }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@ngrx/all"]
     }
   ]
 }

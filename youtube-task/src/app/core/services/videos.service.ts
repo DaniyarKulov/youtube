@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
-import { ViewStateService } from './view-state.service';
+import { Store } from '@ngrx/store';
+import { selectVideos } from '../../store/videos.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -8,12 +9,12 @@ import { ViewStateService } from './view-state.service';
 export class VideosService {
   private filter$$ = new BehaviorSubject<string>('');
   public filter$ = this.filter$$.asObservable();
-  public videos$ = combineLatest([this.viewStateService.videos$, this.filter$]).pipe(
+  public videos$ = combineLatest([this.store.select(selectVideos), this.filter$]).pipe(
     map(([videos, filterValue]) =>
       videos.filter((video) => video.snippet.title.toLowerCase().includes(filterValue.toLowerCase())),
     ),
   );
-  constructor(private viewStateService: ViewStateService) {}
+  constructor(private store: Store) {}
 
   public changeFilterValue(searchValue: string): void {
     this.filter$$.next(searchValue);
