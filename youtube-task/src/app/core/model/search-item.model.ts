@@ -1,3 +1,11 @@
+import { PageInfo } from './search-response.model';
+
+export interface Video {
+  kind: string;
+  etag: string;
+  pageInfo: PageInfo;
+  items: SearchItem[];
+}
 export interface SearchItem {
   kind: string;
   etag: string;
@@ -5,7 +13,6 @@ export interface SearchItem {
   snippet: Snippet;
   statistics: Statistics;
 }
-
 export interface Snippet {
   publishedAt: string;
   channelId: string;

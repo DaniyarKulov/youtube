@@ -21,8 +21,8 @@ export class BorderColorDirective implements OnChanges {
   public ngOnChanges(): void {
     if (this.date) {
       const date = new Date(this.date).getTime();
-      const curDate = Date.now();
-      const color = this.getColor(curDate, date);
+      const currentDate = Date.now();
+      const color = this.getColor(currentDate, date);
       this.setColor(color);
     }
   }
@@ -31,8 +31,8 @@ export class BorderColorDirective implements OnChanges {
     this.renderer.setStyle(this.el.nativeElement, 'border-color', color);
   }
 
-  private getColor(curDate: number, date: number): string {
-    const dateDifference = curDate - date;
+  private getColor(currentDate: number, date: number): string {
+    const dateDifference = currentDate - date;
     if (dateDifference <= ColorsDatesMs.week) {
       return ColorsDatesMs.blue;
     }

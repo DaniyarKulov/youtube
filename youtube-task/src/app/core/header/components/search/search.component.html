@@ -1,15 +1,17 @@
 <div class="content">
-  <img src="../../../../../assets/image/svg/logo.svg" alt="" />
-  <div>
+  <img routerLink="/youtube" src="./assets/image/svg/logo.svg" alt="" />
+  <form [formGroup]="searchForm">
     <mat-form-field class="search" appearance="fill">
       <mat-label></mat-label>
-      <input matInput />
+      <input [formControl]="searchControl" matInput />
+      <span *ngIf="searchControl.hasError('required')">asdasds</span>
     </mat-form-field>
-  </div>
-  <img (click)="onSortComponent()" src="../../../../../assets/image/svg/search_settings.svg" alt="" />
+  </form>
+  <img (click)="changeVisibility()" src="./assets/image/svg/search_settings.svg" alt="" />
   <div class="logo">
     <mat-card-title>{{ username$ | async }}</mat-card-title>
-    <img class="logo__avatar" src="../../../../../assets/image/svg/login.svg" alt="" />
+    <img class="logo__avatar" src="./assets/image/svg/login.svg" alt="" />
   </div>
   <button (click)="logout()">Logout</button>
+  <button routerLink="/create">Создать карточку</button>
 </div>

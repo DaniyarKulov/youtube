@@ -3,4 +3,5 @@ export const enum SortDirection {
   dateIncrease = 'dateIncrease',
   viewCountDecrease = 'viewCountDecrease',
   viewCountIncrease = 'viewCountIncrease',
+  number = 3,
 }

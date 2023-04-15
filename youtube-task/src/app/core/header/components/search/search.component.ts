@@ -1,4 +1,8 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { debounceTime, filter, startWith, switchMap } from 'rxjs';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SortDirection } from '../../../constans/sort-direction.model';
+import { ViewStateService } from '../../../services/view-state.service';
 import { LoginService } from '../../../../auth/services/login.service';
 
 @Component({
@@ -6,18 +10,37 @@ import { LoginService } from '../../../../auth/services/login.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
-  @Output() public isSortComponentChange = new EventEmitter<boolean>();
+export class SearchComponent implements OnInit {
+  @Output() public isSortAvailabilityChanged = new EventEmitter<boolean>();
   public username$ = this.loginService.username$;
-  public isSortComponent: boolean = false;
+  public isVisibleSortComponent: boolean = false;
+  public searchForm!: FormGroup<{ search: FormControl<string | null> }>;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private viewStateService: ViewStateService) {}
+
+  public ngOnInit(): void {
+    this.searchForm = new FormGroup({
+      search: new FormControl<string | null>('', [Validators.maxLength(250)]),
+    });
+    this.searchControl.valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(800),
+        filter((search: string | null) => (search ? search.length > SortDirection.number : search === '')),
+        switchMap((search) => this.viewStateService.getVideos(search ?? '')),
+      )
+      .subscribe();
+  }
+  public get searchControl(): FormControl<string | null> {
+    return this.searchForm.controls.search;
+  }
+
   public logout(): void {
     this.loginService.logout();
   }
 
-  public onSortComponent(): void {
-    this.isSortComponent = !this.isSortComponent;
-    this.isSortComponentChange.emit(this.isSortComponent);
+  public changeVisibility(): void {
+    this.isVisibleSortComponent = !this.isVisibleSortComponent;
+    this.isSortAvailabilityChanged.emit(this.isVisibleSortComponent);
   }
 }

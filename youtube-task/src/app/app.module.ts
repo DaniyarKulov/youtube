@@ -1,15 +1,23 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { YoutubeInterceptor } from './youtube/module/youtube.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: YoutubeInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, CoreModule, HttpClientModule, BrowserAnimationsModule],
 })
 export class AppModule {}

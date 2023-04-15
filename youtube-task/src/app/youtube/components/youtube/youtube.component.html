@@ -1,9 +1,9 @@
 <mat-card>
   <ul class="ul">
     <app-form-video-item
-      *ngFor="let item of items$ | async | filter : search | sort : viewCount; trackBy: trackById"
+      *ngFor="let itemApi of videos$ | async | sort : (sortOptions$ | async); trackBy: trackById"
       class="form"
-      [appBorderColor]="item.snippet.publishedAt"
-      [video]="item"></app-form-video-item>
+      [appBorderColor]="itemApi.snippet.publishedAt"
+      [video]="itemApi"></app-form-video-item>
   </ul>
 </mat-card>

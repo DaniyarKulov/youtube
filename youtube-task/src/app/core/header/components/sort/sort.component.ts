@@ -1,40 +1,35 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { SortDirection } from '../../../constans/sort-direction.model';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { SortCriterias } from '../../../../shared/sort-criterias.type';
+import { SortVideosService } from '../../../services/sort-videos.service';
+import { VideosService } from '../../../services/videos.service';
 
 @Component({
   selector: 'app-sort',
   templateUrl: './sort.component.html',
   styleUrls: ['./sort.component.scss'],
 })
-export class SortComponent {
-  public sortByDateDirection = '';
-  public sortByCountDirection = '';
-
-  @Output() public searchEventEmitter: EventEmitter<string> = new EventEmitter<string>();
-
+export class SortComponent implements OnInit {
+  @Output() public searchQueryChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() public sortOrderChange: EventEmitter<string> = new EventEmitter<string>();
+  public filterForm!: FormGroup<{ filter: FormControl<string | null> }>;
 
-  public changeDateDirection(): void {
-    if (this.sortByDateDirection === '' || this.sortByDateDirection === SortDirection.dateDecrease) {
-      this.sortOrderChange.emit(SortDirection.dateDecrease);
-      this.sortByDateDirection = SortDirection.dateIncrease;
-      return;
-    }
-    this.sortOrderChange.emit(SortDirection.dateIncrease);
-    this.sortByDateDirection = SortDirection.dateDecrease;
+  constructor(private videosService: VideosService, private sortVideosService: SortVideosService) {}
+
+  public ngOnInit(): void {
+    this.filterForm = new FormGroup({
+      filter: new FormControl<string | null>(''),
+    });
+    this.filterControl.valueChanges.subscribe((searchValue) => {
+      this.videosService.changeFilterValue(searchValue ?? '');
+    });
   }
 
-  public changeSortByCountDirection(): void {
-    if (this.sortByCountDirection === '' || this.sortByCountDirection === SortDirection.viewCountDecrease) {
-      this.sortOrderChange.emit(SortDirection.viewCountDecrease);
-      this.sortByCountDirection = SortDirection.viewCountIncrease;
-      return;
-    }
-    this.sortOrderChange.emit(SortDirection.viewCountIncrease);
-    this.sortByCountDirection = SortDirection.viewCountDecrease;
+  public sort(sortCriterias: SortCriterias): void {
+    this.sortVideosService.changeSortValue(sortCriterias);
   }
 
-  public searchDirection(event: string): void {
-    this.searchEventEmitter.emit(event);
+  public get filterControl(): FormControl<string | null> {
+    return this.filterForm.controls.filter;
   }
 }

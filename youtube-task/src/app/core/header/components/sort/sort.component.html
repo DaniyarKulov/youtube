@@ -1,9 +1,11 @@
-<div class="sort">
-  <p>sorting by:</p>
-  <button (click)="changeDateDirection()">date {{ sortByDateDirection === 'dateIncrease' ? '↑' : '↓' }} </button>
-  <button (click)="changeSortByCountDirection()"
-    >count of views {{ sortByCountDirection === 'viewCountIncrease' ? '↑' : '↓' }}</button
-  >
-  <p>by word or sentance:</p>
-  <input #inputElem (input)="searchDirection(inputElem.value)" type="text" />
-</div>
+<form [formGroup]="filterForm">
+  <div class="sort">
+    <p>sorting by:</p>
+    <app-sort-button (sortCriteriasState)="sort({ type: 'data', direction: $event })" sortType="date"></app-sort-button>
+    <app-sort-button
+      (sortCriteriasState)="sort({ type: 'views', direction: $event })"
+      sortType="views"></app-sort-button>
+    <p>by word or sentance:</p>
+    <input mat-input type="search" [formControl]="filterControl" />
+  </div>
+</form>

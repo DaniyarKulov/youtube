@@ -7,9 +7,9 @@
       <img
         class="video__image"
         mat-card-image
-        ngSrc="{{ video.snippet.thumbnails.maxres.url }}"
-        width="729"
-        height="461"
+        ngSrc="{{ video.snippet.thumbnails.high.url }}"
+        width="{{ video.snippet.thumbnails.high.width }}"
+        height="{{ video.snippet.thumbnails.high.height }}"
         alt="{{ video.snippet.title }}" />
     </div>
     <div class="video__info">
@@ -27,7 +27,6 @@
         <p class="video__count"> <mat-icon>visibility</mat-icon> {{ video.statistics.viewCount }}</p>
         <p class="video__count"> <mat-icon>thumb_up</mat-icon> {{ video.statistics.likeCount }}</p>
         <p class="video__count"> <mat-icon>favorite</mat-icon> {{ video.statistics.favoriteCount }}</p>
-        <p class="video__count"> <mat-icon>thumb_down</mat-icon> {{ video.statistics.dislikeCount }}</p>
         <p class="video__count"> <mat-icon>forum</mat-icon> {{ video.statistics.commentCount }}</p>
       </div>
     </div>

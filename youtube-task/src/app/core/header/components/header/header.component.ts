@@ -15,11 +15,7 @@ export class HeaderComponent {
     this.viewStateService.changeSearchValue(searchValue);
   }
 
-  public onSortOrderChange(sortValue: string): void {
-    this.viewStateService.changeValue(sortValue);
-  }
-
-  public toggleSortingAvailability(isSortAvailable: boolean): void {
+  public onSearchAvailabilityToggle(isSortAvailable: boolean): void {
     this.isSortAvailable = isSortAvailable;
   }
 }
