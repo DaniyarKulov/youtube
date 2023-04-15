@@ -1,10 +1,9 @@
-import { debounceTime, filter, startWith, switchMap, tap } from 'rxjs';
+import { debounceTime, filter, startWith, tap } from 'rxjs';
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { getVideos } from '../../../../store/get-videos.actions';
 import { SortDirection } from '../../../constans/sort-direction.model';
-import { ViewStateService } from '../../../services/view-state.service';
 import { LoginService } from '../../../../auth/services/login.service';
 
 @Component({
@@ -18,7 +17,7 @@ export class SearchComponent implements OnInit {
   public isVisibleSortComponent: boolean = false;
   public searchForm!: FormGroup<{ search: FormControl<string | null> }>;
 
-  constructor(private loginService: LoginService, private viewStateService: ViewStateService, private store: Store) {}
+  constructor(private loginService: LoginService, private store: Store) {}
 
   public ngOnInit(): void {
     this.searchForm = new FormGroup({

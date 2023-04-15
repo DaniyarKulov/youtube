@@ -4,6 +4,12 @@
       *ngFor="let itemApi of videos$ | async | sort : (sortOptions$ | async); trackBy: trackById"
       class="form"
       [appBorderColor]="itemApi.snippet.publishedAt"
-      [video]="itemApi"></app-form-video-item>
+      [video]="itemApi">
+    </app-form-video-item>
+    <li *ngFor="let video of addVideo$ | async">
+      <img ngSrc="{{ video.img }}" width="320" height="180" alt="{{ video.title }}" />
+      <h2>{{ video.title }}</h2>
+      <p>{{ video.description }}</p>
+    </li>
   </ul>
 </mat-card>

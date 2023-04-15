@@ -27,6 +27,14 @@ export interface Snippet {
   defaultAudioLanguage: string;
 }
 
+export interface AddVideo {
+  title: string | null;
+  description: string | null;
+  img: string | null;
+  link: string | null;
+  creationDate: string | null;
+}
+
 export interface Thubnails {
   default: Thubnail;
   medium: Thubnail;

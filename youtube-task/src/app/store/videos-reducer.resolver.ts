@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { getVideos, getVideosFailure, getVideosSuccess } from './get-videos.actions';
+import { addVideo, getVideos, getVideosFailure, getVideosSuccess } from './get-videos.actions';
 import { VideosState } from '../shared/models/videos-state.model';
 
 const initialVideosState: VideosState = {
   videos: [],
+  video: [],
   error: null,
   isLoading: false,
 };
@@ -31,6 +32,13 @@ export const videosReducers = createReducer(
       ...state,
       error: action.error,
       isLoading: false,
+    }),
+  ),
+  on(
+    addVideo,
+    (state, action): VideosState => ({
+      ...state,
+      video: [...state.video, action.video],
     }),
   ),
 );
