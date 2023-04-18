@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { addVideo } from '../../store/get-videos.actions';
 
 interface CreateCard {
   title: FormControl<string | null>;
@@ -17,6 +19,8 @@ interface CreateCard {
 export class CreatCardComponent implements OnInit {
   public isFormSubmitted = true;
   public videoForm!: FormGroup<CreateCard>;
+
+  constructor(private store: Store) {}
 
   public ngOnInit(): void {
     this.videoForm = new FormGroup({
@@ -61,5 +65,17 @@ export class CreatCardComponent implements OnInit {
 
   public onSubmit(): void {
     this.isFormSubmitted = this.videoForm.invalid;
+
+    if (this.videoForm.valid) {
+      const video = {
+        title: this.titleControl.value ?? '',
+        img: this.imgControl.value ?? '',
+        link: this.linkControl.value ?? '',
+        creationDate: this.dateControl.value ?? '',
+        description: this.desciptionControl.value ?? '',
+      };
+      this.store.dispatch(addVideo({ video }));
+      this.videoForm.reset();
+    }
   }
 }
