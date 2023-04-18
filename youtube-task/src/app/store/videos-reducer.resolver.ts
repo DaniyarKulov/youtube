@@ -4,7 +4,7 @@ import { VideosState } from '../shared/models/videos-state.model';
 
 const initialVideosState: VideosState = {
   videos: [],
-  video: [],
+  creatVideo: [],
   error: null,
   isLoading: false,
 };
@@ -38,7 +38,7 @@ export const videosReducers = createReducer(
     addVideo,
     (state, action): VideosState => ({
       ...state,
-      video: [...state.video, action.video],
+      creatVideo: [...state.creatVideo, action.video],
     }),
   ),
 );

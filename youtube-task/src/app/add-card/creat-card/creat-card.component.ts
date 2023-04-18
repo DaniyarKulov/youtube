@@ -65,7 +65,6 @@ export class CreatCardComponent implements OnInit {
 
   public onSubmit(): void {
     this.isFormSubmitted = this.videoForm.invalid;
-    console.log(this.videoForm.value);
 
     if (this.videoForm.valid) {
       const video = {

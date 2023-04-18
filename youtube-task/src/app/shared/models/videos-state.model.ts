@@ -2,7 +2,7 @@ import { AddVideo, SearchItem } from '../../core/model/search-item.model';
 
 export interface VideosState {
   videos: SearchItem[];
-  video: AddVideo[];
+  creatVideo: AddVideo[];
   error: string | null;
   isLoading: boolean;
 }
