@@ -13,13 +13,11 @@ Angular, NGRX, RXJS, Material UI, Reactive Form, Guards
 <details>
   <summary><h2>Screenshots</h2></summary>  
   
-  
- ![image](https://github.com/DaniyarKulov/airways-angular/assets/91828656/bf8e0de8-0da1-4276-b7c4-413b686dc3fe)
- ![image](https://github.com/DaniyarKulov/airways-angular/assets/91828656/75a4a9e4-3944-48e8-9759-f738cfe40235)
- ![image](https://github.com/DaniyarKulov/airways-angular/assets/91828656/2a349ad1-b5c9-419a-aa2d-d84d08e5efb8)
- ![image](https://github.com/DaniyarKulov/airways-angular/assets/91828656/0b52f87d-ea57-4eb9-80d5-39e857925e1a)
- ![image](https://github.com/DaniyarKulov/airways-angular/assets/91828656/7dcfcdb4-968f-48f9-8b4f-32d1bd3474e2)
- ![image](https://github.com/DaniyarKulov/airways-angular/assets/91828656/fd7ea541-2d33-4421-8afa-1586c5ef5069)
+![image](https://github.com/DaniyarKulov/youtube/assets/91828656/e708318a-b564-4548-9c98-c6cfeb4527ae)
+![image](https://github.com/DaniyarKulov/youtube/assets/91828656/ceeda8aa-adba-49b0-97a5-94dfdce8360b)
+![image](https://github.com/DaniyarKulov/youtube/assets/91828656/0cb4973e-8390-4d1f-b6bc-ba80f7f8f647)
+![image](https://github.com/DaniyarKulov/youtube/assets/91828656/7d96b03a-34fd-4a89-b861-451adac73ba5)
+
 
 </details>
 
